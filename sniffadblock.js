@@ -1,14 +1,9 @@
-/*
-FuckAdBlock 3.0.2
-http://github.com/sitexw/FuckAdBlock
-*/
-
 (function(window) {
-    if (window.fuckAdBlock !== undefined) {
+    if (window.sniffAdBlock !== undefined) {
         return;
     }
 
-    var FuckAdBlock = function(options) {
+    var SniffAdBlock = function(options) {
         if (options !== undefined) {
             this.setOption(options);
         }
@@ -32,7 +27,7 @@ http://github.com/sitexw/FuckAdBlock
             window.attachEvent('onload', eventCallback);
         }
     };
-    FuckAdBlock.prototype._options = {
+    SniffAdBlock.prototype._options = {
         checkOnLoad: true,
         resetOnEnd: true,
         loopCheckTime: 50,
@@ -40,7 +35,7 @@ http://github.com/sitexw/FuckAdBlock
         baitClass: 'pub_300x250 pub_300x250m pub_728x90 text-ad textAd text_ad text_ads text-ads text-ad-links',
         baitStyle: 'width: 1px !important; height: 1px !important; position: absolute !important; left: -10000px !important; top: -1000px !important;'
     };
-    FuckAdBlock.prototype._var = {
+    SniffAdBlock.prototype._var = {
         version: '3.0.1',
         bait: null,
         checking: false,
@@ -51,9 +46,9 @@ http://github.com/sitexw/FuckAdBlock
             notDetected: []
         }
     };
-    FuckAdBlock.prototype._bait = null;
+    SniffAdBlock.prototype._bait = null;
 
-    FuckAdBlock.prototype.setOption = function(options, value) {
+    SniffAdBlock.prototype.setOption = function(options, value) {
         if (value !== undefined) {
             var key = options;
             options = {};
@@ -65,7 +60,7 @@ http://github.com/sitexw/FuckAdBlock
         return this;
     };
 
-    FuckAdBlock.prototype._creatBait = function() {
+    SniffAdBlock.prototype._creatBait = function() {
         var bait = document.createElement('div');
         bait.setAttribute('class', this._options.baitClass);
         bait.setAttribute('style', this._options.baitStyle);
@@ -79,12 +74,12 @@ http://github.com/sitexw/FuckAdBlock
         this._var.bait.clientHeight;
         this._var.bait.clientWidth;
     };
-    FuckAdBlock.prototype._destroyBait = function() {
+    SniffAdBlock.prototype._destroyBait = function() {
         window.document.body.removeChild(this._var.bait);
         this._var.bait = null;
     };
 
-    FuckAdBlock.prototype.check = function(loop) {
+    SniffAdBlock.prototype.check = function(loop) {
         if (loop === undefined) {
             loop = true;
         }
@@ -109,7 +104,7 @@ http://github.com/sitexw/FuckAdBlock
 
         return true;
     };
-    FuckAdBlock.prototype._checkBait = function(loop) {
+    SniffAdBlock.prototype._checkBait = function(loop) {
         var detected = false;
 
         if (this._var.bait === null) {
@@ -150,7 +145,7 @@ http://github.com/sitexw/FuckAdBlock
         }
     };
 
-    FuckAdBlock.prototype.emitEvent = function(detected) {
+    SniffAdBlock.prototype.emitEvent = function(detected) {
         var fns = this._var.event[(detected === true ? 'detected' : 'notDetected')];
         for (i in fns) {
             fns[i]();
@@ -160,21 +155,21 @@ http://github.com/sitexw/FuckAdBlock
         }
         return this;
     };
-    FuckAdBlock.prototype.clearEvent = function() {
+    SniffAdBlock.prototype.clearEvent = function() {
         this._var.event.detected = [];
         this._var.event.notDetected = [];
     };
 
-    FuckAdBlock.prototype.on = function(detected, fn) {
+    SniffAdBlock.prototype.on = function(detected, fn) {
         this._var.event[(detected === true ? 'detected' : 'notDetected')].push(fn);
         return this;
     };
-    FuckAdBlock.prototype.onDetected = function(fn) {
+    SniffAdBlock.prototype.onDetected = function(fn) {
         return this.on(true, fn);
     };
-    FuckAdBlock.prototype.onNotDetected = function(fn) {
+    SniffAdBlock.prototype.onNotDetected = function(fn) {
         return this.on(false, fn);
     };
 
-    window.fuckAdBlock = new FuckAdBlock();
+    window.sniffAdBlock = new SniffAdBlock();
 })(window);

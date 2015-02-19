@@ -1,10 +1,10 @@
 {
-	"name": "FuckAdBlock",
-	"author": ["Valentin Allaire <valentin.allaire@sitexw.fr>"],
-	"version": "3.0.2",
-	"main": "fuckadblock.js",
-	"license": "MIT",
-	"ignore": [
-		"package.json"
-	]
+    "name": "SniffAdBlock",
+    "author": ["Valentin Allaire <valentin.allaire@sitexw.fr>"],
+    "version": "0.0.0",
+    "main": "sniffadblock.js",
+    "license": "MIT",
+    "ignore": [
+        "package.json"
+    ]
 }

@@ -1,4 +1,4 @@
-FuckAdBlock (v3.0.2)
+SniffAdBlock (v0.0.0)
 ===========
 
 Allows you to detect those nasty ad blockers.
@@ -25,25 +25,25 @@ function adBlockDetected() {
 	alert('AdBlock is enabled');
 }
 
-// Recommended audit because AdBlock lock the file 'fuckadblock.js' 
-// If the file is not called, the variable does not exist 'fuckAdBlock'
+// Recommended audit if AdBlock locks the file 'sniffadblock.js' 
+// If the file is not called, the variable does not exist 'sniffAdBlock'
 // This means that AdBlock is present
-if(typeof fuckAdBlock === 'undefined') {
+if(typeof sniffAdBlock === 'undefined') {
 	adBlockDetected();
 } else {
-	fuckAdBlock.onDetected(adBlockDetected);
-	fuckAdBlock.onNotDetected(adBlockNotDetected);
+	sniffAdBlock.onDetected(adBlockDetected);
+	sniffAdBlock.onNotDetected(adBlockNotDetected);
 	// and|or
-	fuckAdBlock.on(true, adBlockDetected);
-	fuckAdBlock.on(false, adBlockNotDetected);
+	sniffAdBlock.on(true, adBlockDetected);
+	sniffAdBlock.on(false, adBlockNotDetected);
 	// and|or
-	fuckAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
+	sniffAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
 }
 
 // Change the options
-fuckAdBlock.setOptions('checkOnLoad', false);
+sniffAdBlock.setOptions('checkOnLoad', false);
 // and|or
-fuckAdBlock.setOptions({
+sniffAdBlock.setOptions({
 	checkOnLoad: false,
 	resetOnEnd: false
 });
@@ -53,7 +53,7 @@ Default options
 ---------------------
 ```javascript
 // At launch, check if AdBlock is enabled
-// Uses the method fuckAdBlock.check()
+// Uses the method sniffAdBlock.check()
 checkOnLoad: true
 
 // At the end of the check, is that it removes all events added ?
@@ -79,28 +79,28 @@ Method available
 // Allows to set options
 // #options: string|object
 // #value:   string
-fuckAdBlock.setOption(options, value);
+sniffAdBlock.setOption(options, value);
 
 // Allows to check if AdBlock is enabled
 // The parameter 'loop' allows checking without loop several times according to the value of 'loopMaxNumber'
 // Example: loop=true  => time~=200ms (time varies depending on the configuration)
 //          loop=false => time~=1ms
 // #loop: boolean (default: true)
-fuckAdBlock.check(loop);
+sniffAdBlock.check(loop);
 
 // Allows to manually simulate the presence of AdBlock or not
 // #detected: boolean (AdBlock is detected ?)
-fuckAdBlock.emitEvent(detected);
+sniffAdBlock.emitEvent(detected);
 
 // Allows to clear all events added via methods 'on', 'onDetected' and 'onNotDetected'
-fuckAdBlock.clearEvent();
+sniffAdBlock.clearEvent();
 
 // Allows to add an event if AdBlock is detected
 // #detected: boolean (true: detected, false: not detected)
 // #fn:       function
-fuckAdBlock.on(detected, fn);
+sniffAdBlock.on(detected, fn);
 
-// Similar to fuckAdBlock.on(true|false, fn)
-fuckAdBlock.onDetected(fn);
-fuckAdBlock.onNotDetected(fn);
+// Similar to sniffAdBlock.on(true|false, fn)
+sniffAdBlock.onDetected(fn);
+sniffAdBlock.onNotDetected(fn);
 ```
