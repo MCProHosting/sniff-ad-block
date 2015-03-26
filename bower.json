@@ -1,8 +1,8 @@
 {
-    "name": "SniffAdBlock",
+    "name": "sniff-ad-block",
     "author": ["Valentin Allaire <valentin.allaire@sitexw.fr>"],
-    "version": "0.0.0",
-    "main": "sniffadblock.js",
+    "version": "0.0.1",
+    "main": "sniff-ad-block.js",
     "license": "MIT",
     "ignore": [
         "package.json"

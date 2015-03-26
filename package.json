@@ -1,8 +1,8 @@
 {
-    "name": "SniffAdBlock",
-    "version": "0.0.0",
+    "name": "sniff-ad-block",
+    "version": "0.0.1",
     "description": "Detects ad blockers",
-    "main": "sniffadblock.js",
+    "main": "sniff-ad-block.js",
     "license": "MIT",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
